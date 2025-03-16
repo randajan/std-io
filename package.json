@@ -1,0 +1,45 @@
+{
+  "name": "@randajan/std-io",
+  "version": "1.0.0",
+  "description": "Lightweight JSON-based STDIN/STDOUT wrapper for Node.js",
+  "repository": "randajan/std-io",
+  "type": "module",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    }
+  },
+  "license": "MIT",
+  "peerDependencies": {},
+  "devDependencies": {
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "fetch",
+    "json",
+    "http",
+    "api",
+    "network",
+    "request",
+    "rest",
+    "ajax",
+    "wrapper",
+    "error-handling"
+  ],
+  "homepage": "https://github.com/randajan/std-io",
+  "bugs": {
+    "url": "https://github.com/randajan/std-io/issues"
+  },
+  "author": {
+    "name": "Jan Randa",
+    "email": "jnranda@gmail.com",
+    "url": "https://www.linkedin.com/in/randajan/"
+  }
+}
