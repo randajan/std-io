@@ -71,7 +71,7 @@ export class StdIO extends Function {
         const _p = _privs.get(this);
         const { key, queue, sTx, encTx } = _p;
 
-        if (!sTx.writable) { throw new Error("Stream is not writable"); }
+        if (!sTx?.writable) { throw new Error("Stream is not writable"); }
 
         return new Promise((res, rej) => {
             const qid = queue.reg(res, rej);
