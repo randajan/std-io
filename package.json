@@ -1,6 +1,6 @@
 {
   "name": "@randajan/std-io",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lightweight JSON-based STDIN/STDOUT wrapper for Node.js",
   "repository": "randajan/std-io",
   "type": "module",
