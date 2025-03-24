@@ -67,7 +67,7 @@ export class StdIO extends Function {
         return Object.setPrototypeOf(self, this);
     }
 
-    async tx(route, body) {
+    async tx(route, body, timeout) {
         const _p = _privs.get(this);
         const { key, queue, sTx, encTx } = _p;
 
@@ -76,7 +76,7 @@ export class StdIO extends Function {
         return new Promise((res, rej) => {
             const qid = queue.reg(res, rej);
             write(sTx, key, {qid, route, body}, encTx);
-            queue.start(qid);
+            queue.start(qid, timeout);
         });
     }
 

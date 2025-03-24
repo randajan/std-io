@@ -14,11 +14,12 @@ export class Queue extends Map {
         return id;
     }
 
-    start(id) {
-        if (!(this.timeout > 0)) { return false; }
+    start(id, timeout) {
+        if (timeout == null) { timeout = this.timeout; }
+        if (!(timeout > 0)) { return false; }
         const q = this.get(id);
         if (!q) { return false; }
-        q.tid = setTimeout(_=>this.end(id, false, new Error("Timeout")), this.timeout);
+        q.tid = setTimeout(_=>this.end(id, false, new Error("Timeout")), timeout);
     }
 
     end(id, isOk, data) {
