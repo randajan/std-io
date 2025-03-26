@@ -23,3 +23,7 @@ export const write = (stream, key, body, enc)=>{
 }
 
 export const sleep = async (ms)=>new Promise(res=>setTimeout(res, ms));
+
+export const bfrToStr = (any)=>{
+    return any instanceof Buffer ? any.toString("utf8") : any;
+}

@@ -12,6 +12,9 @@ stdio.rx("ping", (data) => {
     return "cli pong";
 });
 
+stdio.rx("stop", _=>{
+    process.exit(0);
+});
 
 // stdio.rx("echo", (data, reply) => {
 //     console.log("[SERVER] Přijal:", data);
@@ -26,4 +29,4 @@ stdio.rx("ping", (data) => {
 // console.log("[SERVER] Server běží...");
 
 // Udržení procesu aktivního
-setInterval(() => {}, 1000);
+//setInterval(() => {}, 1000);

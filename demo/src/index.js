@@ -24,6 +24,6 @@ stdio.rx("log", msg=>{ console.log("remoteLog:", msg); });
 // Ukončení po 5s
 setTimeout(() => {
     console.log("Test dokončen, ukončuji server.");
-    client.kill();
-    throw new Error("END");
+    stdio.tx("stop");
+    process.exit(0);
 }, 3000);

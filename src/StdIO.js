@@ -1,5 +1,5 @@
 import { Queue } from "./Queue";
-import { createReader, tryJson, write } from "./tool";
+import { bfrToStr, createReader, tryJson, write } from "./tool";
 import { Router } from "./Router";
 
 const _privs = new WeakMap();
@@ -53,13 +53,13 @@ export class StdIO extends Function {
         };
 
         _p.sRx?.on("data", createReader(parseRow, _p.encRx));
-        _p.sErr?.on("data", err=>_p.routes.run("error", err, "rx", "warning"));
-        _p.sErr?.on("error", err=>_p.routes.run("error", err, "rx", "warning"));
-        _p.sRx?.on("error", err=>_p.routes.run("error", err, "rx", "warning"));
-        _p.sTx?.on("error", err=>_p.routes.run("error", err, "tx", "warning"));
+        _p.sErr?.on("data", err=>_p.routes.run("error", bfrToStr(err), "rx", "warning"));
+        _p.sErr?.on("error", err=>_p.routes.run("error", bfrToStr(err), "rx", "warning"));
+        _p.sRx?.on("error", err=>_p.routes.run("error", bfrToStr(err), "rx", "warning"));
+        _p.sTx?.on("error", err=>_p.routes.run("error", bfrToStr(err), "tx", "warning"));
 
         _p.sTx.on("close", _=>{ delete _p.sTx; }); 
-        if (!isSelf) { prc?.on("uncaughtException", err=>_p.routes.run("error", err, "rx", "critical")); }
+        if (!isSelf) { prc?.on("uncaughtException", err=>_p.routes.run("error", bfrToStr(err), "rx", "critical")); }
 
         const self = (route, body)=>this.tx(route, body);
         _privs.set(self, _p);
